@@ -1,0 +1,22 @@
+﻿services:
+  disasterresourceallocation:
+    image: disasterresourceallocation
+    build:
+      context: .
+      dockerfile: DisasterResourceAllocation/Dockerfile      
+    ports:
+      - 4000:8080
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - development_network
+    
+  redis:
+    image: redis
+    ports:
+      - 5002:6379
+    networks:
+      - development_network
+
+networks:
+  development_network:

@@ -1,0 +1,155 @@
+@HostAddress = http://localhost:4000
+
+# Add Areas
+POST {{HostAddress}}/api/areas
+Accept: application/json
+Content-Type: application/json
+
+[
+  {
+    "AreaID": "E4942FAD-EBA7-4CC7-8DA4-E3616A6DE09F",
+    "UrgencyLevel": 1,
+    "RequiredResource": {
+      "water": 300,
+      "food": 200
+    },
+    "TimeConstraint": 4
+  },
+  {
+    "AreaID": "B5849B71-EE57-429D-B5B1-F1A7DB3DAD7D",
+    "UrgencyLevel": 3,
+    "RequiredResource": {
+      "water": 500,
+      "food": 500
+    },
+    "TimeConstraint": 3
+  },
+  {
+    "AreaID": "962D0EF8-68D3-41C6-9D06-B9F13670862D",
+    "UrgencyLevel": 2,
+    "RequiredResource": {
+      "medicine": 80,
+      "food": 300
+    },
+    "TimeConstraint": 6
+  }
+]
+
+###
+# Add Trucks
+POST {{HostAddress}}/api/trucks
+Accept: application/json
+Content-Type: application/json
+
+[
+  {
+    "TruckId": "DE694ECB-2FB3-4C56-8971-F6BF8DB45AFF",
+    "AvailableResource": {
+      "water": 200,
+      "food": 300
+    },
+    "TravelTimeToArea": {
+      "E4942FAD-EBA7-4CC7-8DA4-E3616A6DE09F": 4,
+      "B5849B71-EE57-429D-B5B1-F1A7DB3DAD7D": 3
+    }
+  },
+  {
+    "TruckId": "1CB43087-08F8-4210-BC20-B1D8B3EDB19E",
+    "AvailableResource": {
+      "water": 200,
+      "medicine": 120
+    },
+    "TravelTimeToArea": {
+      "E4942FAD-EBA7-4CC7-8DA4-E3616A6DE09F": 2,
+      "B5849B71-EE57-429D-B5B1-F1A7DB3DAD7D": 1
+    }
+  },
+  {
+    "TruckId": "22FDF450-B4E8-4AFE-8DF8-FED2086E3D77",
+    "AvailableResource": {
+      "food": 300,
+      "medicine": 150
+    },
+    "TravelTimeToArea": {
+      "E4942FAD-EBA7-4CC7-8DA4-E3616A6DE09F": 3,
+      "B5849B71-EE57-429D-B5B1-F1A7DB3DAD7D": 5
+    }
+  }
+]
+
+###
+# Process Assignments
+POST {{HostAddress}}/api/assignments
+Accept: application/json
+Content-Type: application/json
+
+###
+# Get Last Assignments
+GET {{HostAddress}}/api/assignments
+Accept: application/json
+Content-Type: application/json
+
+###
+# Add Areas
+POST {{HostAddress}}/api/areas
+Accept: application/json
+Content-Type: application/json
+
+[
+  {
+    "AreaID": "146C39D5-137D-43E2-8318-A631EA5E8184",
+    "UrgencyLevel": 2,
+    "RequiredResource": {
+      "water": 70,
+      "food": 50,
+      "medicine": 20
+    },
+    "TimeConstraint": 5
+  }
+]
+
+###
+# Add Trucks
+POST {{HostAddress}}/api/trucks
+Accept: application/json
+Content-Type: application/json
+
+[
+  {
+    "TruckId": "1823CC1F-CDD9-4EB2-9414-CD3EF39CB21B",
+    "AvailableResource": {
+      "water": 120,
+      "food": 120
+    },
+    "TravelTimeToArea": {
+      "146C39D5-137D-43E2-8318-A631EA5E8184": 3
+    }
+  },
+  {
+    "TruckId": "507DCD47-F508-4F11-826E-F453FB770842",
+    "AvailableResource": {
+      "medicine": 40
+    },
+    "TravelTimeToArea": {
+      "146C39D5-137D-43E2-8318-A631EA5E8184": 2
+    }
+  }
+]
+
+###
+# Process Assignments
+POST {{HostAddress}}/api/assignments
+Accept: application/json
+Content-Type: application/json
+
+###
+# Get Last Assignments
+GET {{HostAddress}}/api/assignments
+Accept: application/json
+Content-Type: application/json
+
+###
+# Remove All Assignments
+DELETE {{HostAddress}}/api/assignments
+Accept: application/json
+Content-Type: application/json
